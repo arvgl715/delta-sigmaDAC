@@ -27,7 +27,6 @@ architecture Behavioral of tt_um_delta_sigma_dac is
     signal filter_input_tmp : unsigned(17 downto 0) := (others => '0');
     signal filter_input : signed(18 downto 0) := (others => '0');
 
-    signal delay0 : signed(19 downto 0) := (others => '0');
     signal delay1 : signed(18 downto 0) := (others => '0');
     signal delay2 : signed(18 downto 0) := (others => '0');
     signal delay3 : signed(18 downto 0) := (others => '0');
@@ -52,7 +51,7 @@ begin
         delay2 <= delay3;
         delay3 <= delay4;
         delay4 <= delay5;
-        delay5 <= delay6 + (shift_right(filter_input, 8) - shift_right(filter_input, 3));
+        delay5 <= delay6 + shift_right(shift_right(filter_input, 5) - filter_input, 3);
         delay6 <= delay7 - (shift_right(filter_input, 3));
         delay7 <= delay8;
         delay8 <= delay9;

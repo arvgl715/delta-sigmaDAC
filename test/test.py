@@ -4,8 +4,9 @@
 import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles
-import numpy as np
+#import numpy as np
 #import matplotlib.pyplot as plt
+import math
 
 @cocotb.test()
 async def test_project(dut):
@@ -24,11 +25,12 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 10)
     dut.rst_n.value = 1
 
-    y = np.zeros(100000)
-
+    # y = np.zeros(100000)
+    y = [0]*100000
     dut._log.info("Test project behavior")
     for t in range(100000):
-        x = round(2**15*np.sin(t/1000))
+        # x = round(2**15*np.sin(t/1000))
+        x = round(2**15*math.sin(t/1000))
         dut.ui_in.value = x // 256 # MSBs x >> 8
         dut.uio_in.value = x % 256 # LSBs x & 255
         await ClockCycles(dut.clk, 1)
