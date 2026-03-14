@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity tt_um_Delta_Sigma_DAC is
+entity tt_um_delta_sigma_dac is
     port (
         ui_in   : in  std_logic_vector(7 downto 0);
         uo_out  : out std_logic_vector(7 downto 0);
@@ -13,9 +13,9 @@ entity tt_um_Delta_Sigma_DAC is
         clk     : in  std_logic;
         rst_n   : in  std_logic
     );
-end tt_um_Delta_Sigma_DAC;
+end tt_um_delta_sigma_dac;
 
-architecture Behavioral of tt_um_Delta_Sigma_DAC is
+architecture Behavioral of tt_um_delta_sigma_dac is
 
     constant offset : signed := "01100000000000000000";
 
@@ -73,7 +73,7 @@ begin
     filter_input <= signed(resize(filter_input_tmp, 19));
 
 
-    uo_out(0) <= y;
+    uo_out <= "0000000" & y;
     uio_out <= "00000000"; 
     uio_oe <= "00000000";
 

@@ -27,8 +27,8 @@ module tb ();
   wire VGND = 1'b0;
 `endif
 
-  // Replace tt_um_Delta_Sigma_DAC with your module name:
-  tt_um_Delta_Sigma_DAC user_project (
+  // Replace tt_um_delta_sigma_dac with your module name:
+  tt_um_delta_sigma_dac user_project (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
