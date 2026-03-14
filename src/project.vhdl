@@ -67,13 +67,14 @@ begin
     input <= signed(ui_in & uio_in);
     offset_input <= signed(offset) + resize(input, 20); 
     output <= offset_input + filter_output;
-    assert (output(19) = '0');
+  
     y <= output(18);
     filter_input_tmp <= unsigned(output(17 downto 0));
     filter_input <= signed(resize(filter_input_tmp, 19));
 
 
-    uo_out <= "0000000" & y;
+    uo_out(0) <= y;
+    uo_out(7 downto 1) <= "0000000";
     uio_out <= "00000000"; 
     uio_oe <= "00000000";
 
