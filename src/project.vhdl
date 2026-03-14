@@ -47,8 +47,7 @@ begin
     process(clk)
     begin
     if rising_edge(clk) then
-        filter_output <= delay0;
-        delay0 <= resize(filter_input, 20) + resize(shift_right(filter_input, 2), 20) + resize(delay1, 20);
+        filter_output <= resize(filter_input, 20) + resize(shift_right(filter_input, 2), 20) + resize(delay1, 20);
         delay1 <= delay2 + shift_right(filter_input, 5);
         delay2 <= delay3;
         delay3 <= delay4;
@@ -60,7 +59,7 @@ begin
         delay9 <= delay10;
         delay10 <= delay11;
         delay11 <= delay12;
-        delay12 <= shift_right(filter_input, 3) - (shift_right(filter_input, 5) + shift_right(filter_input, 8));
+        delay12 <= shift_right(filter_input  - (shift_right(filter_input, 2) + shift_right(filter_input, 5)), 3);
     end if;
     end process;
 
