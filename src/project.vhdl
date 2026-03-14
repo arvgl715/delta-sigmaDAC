@@ -73,7 +73,7 @@ begin
     filter_input <= signed(resize(filter_input_tmp, 19));
 
 
-    uo_out(0) <= std_logic_vector(y);
+    uo_out(0) <= y;
     uio_out <= "00000000"; 
     uio_oe <= "00000000";
 
